@@ -1,22 +1,35 @@
 # Multi URL Copier
 
-Extensión de Chrome para copiar múltiples URLs de una página sin navegar a ellas.
+Chrome extension to copy multiple URLs from a page without navigating to them.
 
-## Instalación
+## Installation
 
-1. Clona el repositorio
-2. Abre `chrome://extensions/`
-3. Activa "Modo desarrollador"
-4. Clic en "Cargar descomprimida" y selecciona la carpeta
+1. Clone this repository
+2. Go to `chrome://extensions/`
+3. Enable **Developer mode**
+4. Click **Load unpacked** and select the folder
 
-## Uso
+## Usage
 
-- `Alt + U` - Activa/desactiva el modo captura
-- `Clic` - Captura la URL del enlace
-- `Esc` - Cancela sin copiar
+| Shortcut | Action |
+|----------|--------|
+| `Alt+Shift+U` | Copy ALL links on the current page |
+| `Alt+U` | Toggle manual selection mode |
+| `Click` | Capture link URL (in selection mode) |
+| `Esc` | Cancel without copying |
 
-Al desactivar, las URLs se copian al portapapeles separadas por salto de línea.
+### Copy all links
 
-## Licencia
+Press `Alt+Shift+U` to instantly copy all URLs from the current page to clipboard.
+
+### Manual selection
+
+1. Press `Alt+U` to enter selection mode
+2. Click on links to add them to the list
+3. Press `Alt+U` again to copy and exit
+
+URLs are copied to clipboard separated by newlines.
+
+## License
 
 MIT

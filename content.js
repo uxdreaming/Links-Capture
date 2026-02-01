@@ -64,22 +64,56 @@
         if (toast) toast.remove();
     }
 
+    function getAllPageUrls() {
+        const links = document.querySelectorAll('a[href]');
+        const uniqueUrls = new Set();
+
+        links.forEach(a => {
+            const href = a.href;
+            // Filter valid http/https URLs
+            if (href && (href.startsWith('http://') || href.startsWith('https://'))) {
+                uniqueUrls.add(href);
+            }
+        });
+
+        return Array.from(uniqueUrls);
+    }
+
     document.addEventListener('keydown', function(e) {
-        if (e.altKey && e.key === 'u') {
+        // Alt+Shift+U: Copy all links on page
+        if (e.altKey && e.shiftKey && e.key === 'U') {
+            e.preventDefault();
+            const allUrls = getAllPageUrls();
+
+            if (allUrls.length === 0) {
+                showToast('No links found on this page');
+                setTimeout(hideToast, 2000);
+                return;
+            }
+
+            navigator.clipboard.writeText(allUrls.join('\n')).then(() => {
+                showToast(allUrls.length + ' URLs copied to clipboard');
+                setTimeout(hideToast, 2000);
+            });
+            return;
+        }
+
+        // Alt+U: Toggle manual selection mode
+        if (e.altKey && !e.shiftKey && e.key === 'u') {
             e.preventDefault();
             on = !on;
 
             if (on) {
                 urls = [];
                 createOverlay();
-                showToast('URL Copier ACTIVADO - Haz clic en enlaces');
+                showToast('Click on links to capture (Alt+U to copy, Esc to cancel)');
             } else {
                 overlay?.remove();
                 overlay = null;
 
                 if (urls.length) {
                     navigator.clipboard.writeText(urls.join('\n')).then(() => {
-                        showToast(urls.length + ' URLs copiadas al portapapeles');
+                        showToast(urls.length + ' URLs copied to clipboard');
                         setTimeout(hideToast, 2000);
                     });
                 } else {

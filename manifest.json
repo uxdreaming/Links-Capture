@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Multi URL Copier",
-  "version": "1.0",
-  "description": "Copia múltiples URLs con Alt+U",
+  "version": "1.1",
+  "description": "Copy multiple URLs with Alt+U or all page links with Alt+Shift+U",
   "permissions": ["clipboardWrite"],
   "content_scripts": [
     {
