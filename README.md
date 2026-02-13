@@ -1,6 +1,6 @@
-# Multi URL Copier
+# Links Capture
 
-Chrome extension to copy multiple URLs from a page without navigating to them.
+Chrome extension to capture multiple URLs from a page without navigating to them.
 
 ## Installation
 
